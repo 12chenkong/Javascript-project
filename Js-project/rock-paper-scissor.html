@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissor</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex flex-col items-center">
+    <h1 class="font-serif text-xl">Rock-Paper-Scissor</h1>
+    <div id="choices" class="mt-8 mb-8">
+      <button
+        onclick="playGame('Scissor')"
+        class="text-5xl bg-blue-600 hover:bg-blue-800 h-20 rounded-full px-2"
+      >
+        ✌
+      </button>
+      <button
+        onclick="playGame('Paper')"
+        class="text-5xl bg-blue-600 h-20 rounded-full"
+      >
+        🖐
+      </button>
+      <button
+        onclick="playGame('Rock')"
+        class="text-5xl bg-blue-600 h-20 rounded-full px-2"
+      >
+        ✊
+      </button>
+    </div>
+    <div class="font-serif" id="playerDisplay">PLAYER:</div>
+    <div class="font-serif" id="computerDisplay">COMPUTER:</div>
+    <div
+      class="font-serif text-5xl mt-4 font-semibold bg-green-500 rounded-full py-2 px-4"
+      id="result"
+    ></div>
+
+    <script>
+      const Option = ["Rock", "Paper", "Scissor"];
+      const playerDisplay = document.getElementById("playerDisplay");
+      const computerDisplay = document.getElementById("computerDisplay");
+      const results = document.getElementById("result");
+      function playGame(player) {
+        playerDisplay.innerHTML = `PLAYER: ${player}`;
+        const computerChoice = Option[Math.floor(Math.random() * 3)];
+        computerDisplay.innerHTML = `COMPUTER: ${computerChoice}`;
+
+        let result;
+        if (player === computerChoice) {
+          result = "It's tiessfsfsfsfaafssd";
+        } else {
+          switch (player) {
+            case "Rock":
+              result =
+                computerChoice === "Scissor" ? " YOU WIN!!" : "YOU LOSE!!";
+              break;
+            case "Paper":
+              result = computerChoice === "Rock" ? "YOU WIN!!" : "YOU LOSE!";
+              break;
+            case "Scissor":
+              result = computerChoice == "Paper" ? "YOU WIN!" : "YOU LOSE!";
+              break;
+          }
+          results.innerHTML = result;
+          console.log(result);
+        }
+      }
+    </script>
+  </body>
+</html>

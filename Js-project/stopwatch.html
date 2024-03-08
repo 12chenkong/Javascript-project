@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+      body {
+        font-family: arial, sans-serif;
+        height: 600px;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(200, 187, 187);
+      }
+      .startBtn {
+        background-color: green;
+        border-radius: 10px;
+        border: none;
+        font-size: 30px;
+        color: white;
+        padding: 10px;
+        margin: 6px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .startBtn:hover {
+        background-color: rgb(127, 224, 127);
+      }
+      .resetBtn:hover {
+        background-color: yellowgreen;
+      }
+
+      .stopBtn {
+        background-color: rgb(222, 120, 120);
+        border-radius: 10px;
+        border: none;
+        font-size: 30px;
+        color: white;
+        padding: 10px;
+        margin: 6px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .stopBtn:hover {
+        background-color: rgb(239, 54, 54);
+      }
+      .resetBtn {
+        background-color: rgb(215, 215, 72);
+        border-radius: 10px;
+        border: none;
+        font-size: 30px;
+        color: white;
+        padding: 10px;
+        margin: 6px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid rgb(32, 31, 29);
+        border-radius: 20px;
+        padding: 30px;
+      }
+      #display {
+        font-size: 50px;
+        text-shadow: 2px 2px 2px rgb(212, 110, 110);
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Stopwatch</h1>
+    <div class="container">
+      <div id="display">00:00:00</div>
+      <div id="controll">
+        <button class="startBtn" onclick="start()">Start</button>
+        <button class="stopBtn" onclick=" stop()">Stop</button>
+        <button class="resetBtn" onclick="reset()">Reset</button>
+      </div>
+    </div>
+    <script>
+      const dispaly = document.getElementById("display");
+      let second = 0;
+      let interval = false;
+      let id;
+      // when click button this function runs
+      function start() {
+        if (!interval) {
+          id = setInterval(timer, 1000);
+          interval = true;
+          console.log(id);
+        }
+      }
+      // Use id to stop the interval function
+
+      function stop() {
+        clearInterval(id);
+        interval = false;
+      }
+      function reset() {
+        stop();
+        second = 0;
+        dispaly.textContent = `00:00:00`;
+        interval = false;
+      }
+
+      function timer() {
+        second++;
+        let hours = Math.floor(second / 3600);
+        let minutes = Math.floor((second - hours * 3600) / 60);
+        let sece = second % 60;
+        if (hours < 10) {
+          hours = "0" + hours;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (sece < 10) {
+          sece = "0" + sece;
+        }
+        dispaly.textContent = `${hours}:${minutes}:${sece}`;
+      }
+    </script>
+  </body>
+</html>

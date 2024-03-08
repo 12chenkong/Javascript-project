@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter program</title>
+    <style>
+      .decreaseBtn {
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .increaseBtn {
+        background-color: orange;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .resetBtn {
+        background-color: red;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .container {
+        width: 300px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .warning {
+        font-size: 40px;
+        width: 500px;
+        color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="display">0</h1>
+      <div>
+        <button class="decreaseBtn" onclick=" increase(); ">increase</button>
+        <button class="resetBtn" onclick="decrease(); ">decrease</button>
+        <button class="increaseBtn" onclick="reset(); ">reset</button>
+        <p class="warning"></p>
+      </div>
+    </div>
+    <script>
+      let count = 0;
+      function increase() {
+        count++;
+        document.querySelector(".display").innerHTML = count;
+        document.querySelector(".warning").innerHTML =
+          "This  is increase button";
+      }
+      function decrease() {
+        count--;
+        document.querySelector(".display").innerHTML = count;
+        document.querySelector(".warning").innerHTML =
+          "This  is decrease button";
+      }
+      function reset() {
+        count = 0;
+        document.querySelector(".display").innerHTML = 0;
+        document.querySelector(".warning").innerHTML = "This  is reset button";
+      }
+    </script>
+  </body>
+</html>
